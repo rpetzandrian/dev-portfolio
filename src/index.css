@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ── Tokyo Night Palette ── */
+:root {
+  --tn-bg: #1a1b26;
+  --tn-bg-dark: #16161e;
+  --tn-fg: #a9b1d6;
+  --tn-green: #9ece6a;
+  --tn-blue: #7aa2f7;
+  --tn-purple: #bb9af7;
+  --tn-red: #f7768e;
+  --tn-yellow: #e0af68;
+  --tn-cyan: #7dcfff;
+  --tn-orange: #ff9e64;
+  --tn-comment: #565f89;
+  --tn-selection: #283457;
+}
+
+/* ── Base Styles ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--tn-bg);
+  color: var(--tn-fg);
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ── Hide Scrollbar ── */
+.hide-scrollbar {
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Blinking Cursor ── */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ── CRT Scanline Effect (subtle) ── */
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03) 0px,
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+/* ── Selection Colour ── */
+::selection {
+  background-color: var(--tn-selection);
+  color: var(--tn-fg);
+}
+
+/* ── Input Reset ── */
+input {
+  font-family: "JetBrains Mono", monospace;
+  caret-color: transparent;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: var(--tn-fg);
+}
+
+/* ── Typing Animation for welcome ── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.15s ease-out forwards;
+}
