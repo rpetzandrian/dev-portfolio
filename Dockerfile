@@ -12,7 +12,7 @@ COPY . .
 RUN npm run build
 
 # ── Stage 2: Serve ──
-FROM nginx:1.27-alpine AS production
+FROM nginx:alpine3.23-slim AS production
 
 # Copy built assets from build stage
 COPY --from=build /app/dist /usr/share/nginx/html
